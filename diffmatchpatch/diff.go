@@ -1127,17 +1127,15 @@ func (dmp *DiffMatchPatch) DiffPrettyHtml(diffs []Diff) string {
 		text := strings.Replace(html.EscapeString(diff.Text), "\n", "&para;<br>", -1)
 		switch diff.Type {
 		case DiffInsert:
-			_, _ = buff.WriteString("<ins style=\"background:#e6ffe6;\">")
+			_, _ = buff.WriteString("<div class=\"div_add\">")
 			_, _ = buff.WriteString(text)
-			_, _ = buff.WriteString("</ins>")
+			_, _ = buff.WriteString("</div>")
 		case DiffDelete:
-			_, _ = buff.WriteString("<del style=\"background:#ffe6e6;\">")
+			_, _ = buff.WriteString("<div class=\"div_del\">")
 			_, _ = buff.WriteString(text)
-			_, _ = buff.WriteString("</del>")
+			_, _ = buff.WriteString("</div>")
 		case DiffEqual:
-			_, _ = buff.WriteString("<span>")
 			_, _ = buff.WriteString(text)
-			_, _ = buff.WriteString("</span>")
 		}
 	}
 	return buff.String()
